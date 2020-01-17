@@ -332,7 +332,8 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
         int j;
         for (j = 0; j < classes; ++j) {
             if (selected_detections[i].det.prob[j] > thresh && j != best_class) {
-                printf("%s: %.0f%%\n", names[j], selected_detections[i].det.prob[j] * 100);
+                printf("%s: %.0f%%", names[j], selected_detections[i].det.prob[j] * 100);
+                printf(".20%f %.20f %.20f %.20f\n", b.x, b.y, b.w, b.h);
             }
         }
     }
@@ -364,7 +365,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
             rgb[1] = green;
             rgb[2] = blue;
             box b = selected_detections[i].det.bbox;
-            printf(".20%f %.20f %.20f %.20f\n", b.x, b.y, b.w, b.h);
+            //printf(".20%f %.20f %.20f %.20f\n", b.x, b.y, b.w, b.h);
 
             int left = (b.x - b.w / 2.)*im.w;
             int right = (b.x + b.w / 2.)*im.w;
